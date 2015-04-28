@@ -34,18 +34,26 @@
 
 #include <sailfishapp.h>
 
+#include "browser.h"
+
+#include <QScopedPointer>
 
 int main(int argc, char *argv[])
 {
-    // SailfishApp::main() will display "qml/template.qml", if you need more
-    // control over initialization, you can use:
-    //
-    //   - SailfishApp::application(int, char *[]) to get the QGuiApplication *
-    //   - SailfishApp::createView() to get a new QQuickView * instance
-    //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
-    //
-    // To display the view, call "show()" (will show fullscreen on device).
+    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
+    QScopedPointer<QQuickView> view(SailfishApp::createView());
 
-    return SailfishApp::main(argc, argv);
+    Browser browser;
+    QQmlContext* ctx = view->rootContext();
+    browser.setQmlContext(ctx);
+    browser.updateList();
+
+    ctx->setContextProperty("browser", &browser);
+
+    //view->engine()->addImportPath("qrc:/qml/");
+    view->setSource(QUrl(SailfishApp::pathTo("qml/primFTP.qml")));
+    view->showFullScreen();
+
+    return app->exec();
 }
 

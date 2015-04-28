@@ -12,19 +12,22 @@
 # The name of your application
 TARGET = primFTP
 
+QMAKE_CXXFLAGS+= -std=c++0x
+
 CONFIG += sailfishapp
 
-SOURCES += src/primFTP.cpp
+SOURCES += src/primFTP.cpp \
+    src/browser.cpp
 
 OTHER_FILES += qml/primFTP.qml \
     qml/cover/CoverPage.qml \
-    qml/pages/FirstPage.qml \
     qml/pages/SecondPage.qml \
     rpm/primFTP.spec \
     rpm/primFTP.yaml \
     translations/*.ts \
     primFTP.desktop \
-    rpm/primFTP.changes
+    qml/pages/SelectFile.qml \
+    rpm/primFTP.changes.in
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -35,4 +38,7 @@ CONFIG += sailfishapp_i18n
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/primFTP-de.ts
+
+HEADERS += \
+    src/browser.h
 

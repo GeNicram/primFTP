@@ -35,38 +35,29 @@ import Sailfish.Silica 1.0
 Page {
     id: page
 
-    // To enable PullDownMenu, place our content in a SilicaFlickable
-    SilicaFlickable {
+    SilicaListView {
+        id: listView
         anchors.fill: parent
-
-        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
-        PullDownMenu {
-            MenuItem {
-                text: qsTr("Show Page 2")
-                onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
+        model: fileList
+        header: PageHeader { title: "Select file" }
+        section {
+            property: 'section'
+            delegate: SectionHeader {
+                text: section
             }
         }
-
-        // Tell SilicaFlickable the height of its content.
-        contentHeight: column.height
-
-        // Place our content in a Column.  The PageHeader is always placed at the top
-        // of the page, followed by our content.
-        Column {
-            id: column
-
-            width: page.width
-            spacing: Theme.paddingLarge
-            PageHeader {
-                title: qsTr("UI Template")
-            }
+        delegate: BackgroundItem {
+            width: listView.width
             Label {
+                id: firstName
+                text: modelData
+                color: highlighted ? Theme.highlightColor : Theme.primaryColor
+                anchors.verticalCenter: parent.verticalCenter
                 x: Theme.paddingLarge
-                text: qsTr("Hello Sailors")
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeExtraLarge
             }
+            //onClicked: pageStack.push(Qt.resolvedUrl(page))
         }
+        VerticalScrollDecorator {}
     }
 }
 
