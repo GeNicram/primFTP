@@ -27,7 +27,8 @@ OTHER_FILES += qml/primFTP.qml \
     translations/*.ts \
     primFTP.desktop \
     qml/pages/SelectFile.qml \
-    rpm/primFTP.changes.in
+    rpm/primFTP.changes.in \
+    LICENSE.primFTP
 
 # to disable building translations every time, comment out the
 # following CONFIG line
