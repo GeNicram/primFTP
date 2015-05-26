@@ -13,7 +13,23 @@ void Browser::setPath(QString path) {
     act_dir_ = dir;
 }
 
+void Browser::push(QString ndir) {
+    QDir dir(act_dir_);
+
+    if(!dir.cd(ndir)) {
+        qDebug("can't enter");
+        return;
+    }
+
+    act_dir_ = dir;
+}
+
+void Browser::pop() {
+    push("..");
+}
+
 void Browser::updateList() {
+    qDebug(QString("Act path: ").arg(act_dir_.absolutePath()).toLatin1());
     act_dir_.setFilter(QDir::Dirs | QDir::Files | QDir::NoSymLinks | QDir::NoDot);
     act_dir_.setSorting(QDir::DirsFirst);
 

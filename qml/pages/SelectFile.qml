@@ -9,7 +9,7 @@ Page {
         id: listView
         anchors.fill: parent
         model: fileList
-        header: PageHeader { title: "Select file" }
+        header: PageHeader { title: browser.path }
         section {
             property: 'section'
             delegate: SectionHeader {
@@ -25,10 +25,34 @@ Page {
                 anchors.verticalCenter: parent.verticalCenter
                 x: Theme.paddingLarge
             }
-            onClicked: pageStack.push(Qt.resolvedUrl(page))
+            onClicked: pageStack.push(deeperDir)
         }
         VerticalScrollDecorator {}
     }
+
+    Component {
+        id: deeperDir
+        Page {
+            Column {
+                id: column
+                width: parent.width
+                spacing: Theme.paddingLarge
+
+                PageHeader { title: browser.path }
+
+                Button {
+                    text: 'Push'
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: pageStack.push(deeperDir)
+                }
+                Button {
+                    text: 'Pop'
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: pageStack.pop(undefined)
+                }
+            }
+        }
+    } // deeperDir
 }
 
 

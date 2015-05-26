@@ -22,7 +22,7 @@ public:
     void setPath(QString path);
 
     QString path() {
-        return path_;
+        return act_dir_.absolutePath();
     }
 
     Q_INVOKABLE void updateList();
@@ -30,6 +30,10 @@ public:
         ctx_ = ctx;
     }
 
+    //! Try to enter to deeper dir
+    void push(QString ndir);
+    //! Leave last enterned dir
+    void pop();
 
 signals:
     void pathChanged();
@@ -37,7 +41,6 @@ signals:
 private:
     QString getDirContent();
     QString files_;
-    QString path_;
 
     QDir act_dir_;
     QStringList file_list_;
