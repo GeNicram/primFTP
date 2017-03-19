@@ -4,7 +4,7 @@ import "pages"
 
 ApplicationWindow
 {
-    initialPage: Component { SelectFile { } }
+    initialPage: Component { MainMenu { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 }
 

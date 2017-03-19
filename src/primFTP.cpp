@@ -1,7 +1,4 @@
-#ifdef QT_QML_DEBUG
 #include <QtQuick>
-#endif
-
 #include <sailfishapp.h>
 
 #include "browser.h"
@@ -16,7 +13,7 @@ int main(int argc, char *argv[])
     Browser browser;
     QQmlContext* ctx = view->rootContext();
     browser.setQmlContext(ctx);
-    browser.updateList();
+    browser.updateList("fileList");
 
     ctx->setContextProperty("browser", &browser);
 

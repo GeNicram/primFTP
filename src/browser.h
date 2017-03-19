@@ -15,6 +15,10 @@ public:
         act_dir_(QDir::home())
     {}
 
+    Q_INVOKABLE QString getHome() {
+        return QDir::home().absolutePath();
+    }
+
     QString files() {
         return getDirContent();
     }
@@ -25,13 +29,15 @@ public:
         return act_dir_.absolutePath();
     }
 
-    Q_INVOKABLE void updateList();
+    Q_INVOKABLE QStringList getCurrentContent();
+
+    Q_INVOKABLE void updateList(QString containter_id);
     void setQmlContext(QQmlContext* ctx) {
         ctx_ = ctx;
     }
 
     //! Try to enter to deeper dir
-    void push(QString ndir);
+    Q_INVOKABLE void push(QString ndir);
     //! Leave last enterned dir
     void pop();
 
@@ -43,7 +49,6 @@ private:
     QString files_;
 
     QDir act_dir_;
-    QStringList file_list_;
     QQmlContext* ctx_;
 };
 
