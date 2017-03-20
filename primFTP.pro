@@ -18,7 +18,8 @@ CONFIG += sailfishapp
 
 SOURCES += src/primFTP.cpp \
     src/browser.cpp \
-    src/storage.cpp
+    src/storage.cpp \
+    src/ftprecord.cpp
 
 OTHER_FILES += qml/primFTP.qml \
     qml/cover/CoverPage.qml \
@@ -41,7 +42,8 @@ TRANSLATIONS += translations/primFTP-de.ts
 
 HEADERS += \
     src/browser.h \
-    src/storage.h
+    src/storage.h \
+    src/ftprecord.h
 
 DISTFILES += \
     qml/pages/DirectoryContent.qml \
