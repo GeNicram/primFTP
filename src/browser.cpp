@@ -1,6 +1,7 @@
 #include "browser.h"
 
 #include <QDir>
+#include <QStringList>
 
 void Browser::setPath(QString path) {
     QDir dir(act_dir_);

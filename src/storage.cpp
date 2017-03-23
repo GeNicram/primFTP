@@ -5,6 +5,7 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QFile>
+#include <QStringList>
 
 Storage::Storage(QObject *parent) : QObject(parent)
 {
@@ -39,6 +40,16 @@ void Storage::ReadRecord(int id, QString& name, QString& address, QString& path,
             return;
         }
     }
+}
+
+QStringList Storage::GetRecords() {
+    QStringList names;
+
+    foreach (const FtpRecord row, records_) {
+        names.append(row.name);
+    }
+
+    return names;
 }
 
 void Storage::LoadFromFile(QString path) {

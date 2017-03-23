@@ -4,6 +4,7 @@
 #include <QDir>
 #include <QObject>
 #include <QQmlContext>
+#include <QStringList>
 
 class Browser : public QObject
 {

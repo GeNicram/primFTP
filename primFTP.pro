@@ -48,5 +48,6 @@ HEADERS += \
 DISTFILES += \
     qml/pages/DirectoryContent.qml \
     qml/pages/MainMenu.qml \
-    qml/pages/ServerSettings.qml
+    qml/pages/server/ServerSettings.qml \
+    qml/pages/server/ServerList.qml
 
