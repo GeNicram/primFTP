@@ -29,7 +29,16 @@ int Storage::WriteRecord(int id, const QString name, const QString address,
 
 void Storage::ReadRecord(int id, QString& name, QString& address, QString& path,
     QString& user, QString& password) const {
-
+    foreach (const FtpRecord row, records_) {
+        if (row.id == id) {
+            name = row.name;
+            address = row.address;
+            path = row.path;
+            user = row.user;
+            password = row.password;
+            return;
+        }
+    }
 }
 
 void Storage::LoadFromFile(QString path) {
