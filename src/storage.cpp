@@ -112,3 +112,8 @@ void Storage::SaveToFile(const QString path) {
 
     return;
 }
+
+void Storage::ClearStorage(const QString path) {
+    records_.clear();
+    SaveToFile(path);
+}

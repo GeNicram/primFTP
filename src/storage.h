@@ -20,6 +20,7 @@ public:
 
     void LoadFromFile(QString path);
     void SaveToFile(const QString path);
+    void ClearStorage(const QString path);
 
 signals:
 
